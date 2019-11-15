@@ -1,0 +1,26 @@
+{
+  "entry": "src/index.js",
+  "proxy":{
+    "/api":{
+      "target": "http://192.168.0.103/",
+      "changeOrigin":true,
+      "pathRewrite": { "^/api" : "" }
+    }
+  },
+  "disableDynamicImport":false,
+  "extraBabelPlugins": [
+    ["import", {"libraryName": "antd", "libraryDirectory": "lib", "style": "css" }, "antd"]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr"
+      ]
+    },
+    "production": {
+      "extraBabelPlugins": [
+        "transform-remove-console"
+      ]
+    }
+  }
+}
